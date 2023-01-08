@@ -1,8 +1,10 @@
+//this game runs in console, so you should check results there "Ctrl+Shift+I" in any browser
+
 let playerScore = 0;
 let compScore = 0;
 
 //will randomly return rock, paper, scissors as computer
-let getComputerChoice = () => {
+let getComputerChoice = () => { //arrow function
   //generate random number between 0 and 1
   let random = Math.random();
   if (random <= 0.66 && random >= 0.34) {
@@ -56,6 +58,9 @@ let playRound = (playerSelection, computerSelection) => {
     compScore++;
     return "You lost! Scissors beats Paper!";
   }
+  else {
+    return "Something went terribly wrong...";
+  }
 }
 
 //let playerSelection;
@@ -64,6 +69,7 @@ let computerSelection = getComputerChoice();
 //console.log(playRound(playerSelection, computerSelection));
 
 let game = () => {
+  //play for five rounds
   for (i = 0; i < 5; i++) {
     let playerSelection = prompt("Make your choice: ", "Rock, Paper, Scissors").toLowerCase();
     console.log(playRound(playerSelection, getComputerChoice()));
