@@ -1,3 +1,7 @@
+/* eslint-disable max-len */
+/* eslint-disable require-jsdoc */
+/* eslint linebreak-style: ["error", "windows"] */
+
 /* ############# *
 *  # Simple UI # *
 *  ############# */
@@ -24,12 +28,6 @@ button[0].setAttribute('style', 'padding: 12px;');
 button[1].setAttribute('style', 'padding: 12px;');
 button[2].setAttribute('style', 'padding: 12px;');
 
-const result = document.getElementById('result');
-
-result.setAttribute('style', 'color: yellow; font-size: 45px; border: 3px solid white; display: flex; align-items: center; margin-bottom: 20px; padding: 30px; flex-direction: column; font-weight: bolder;');
-
-const finalScore = document.querySelector('#finalScore');
-finalScore.setAttribute('style', 'border: 3px solid blue; margin-top: 30px; font-weight: bolder;');
 
 const footer = document.createElement('div');
 footer.classList.add('footer');
@@ -47,31 +45,33 @@ body.appendChild(footer);
 *  ##################### */
 
 
-/* this fix
-* ####################################################################
-* # Expected linebreaks to be 'LF' but found 'CRLF' error on Windows #
-* #################################################################### */
-
-/* eslint linebreak-style: ["error", "windows"] */
-
-/* this game runs in console, so you should check
-* results there "Ctrl+Shift+I" in any browser */
+/* ##############
+*  # Game Logic #
+*  ############## */
 
 let playerScore = 0;
 let compScore = 0;
+
+const btnRock = document.querySelector('#btn_rock');
+const btnPaper = document.querySelector('#btn_paper');
+const btnScissors = document.querySelector('#btn_scissors');
+const result = document.getElementById('result');
+
+result.setAttribute('style', 'color: yellow; font-size: 45px; border: 3px solid white; display: flex; align-items: center; margin-bottom: 20px; padding: 30px; flex-direction: column; font-weight: bolder;');
+
+const finalScore = document.querySelector('#finalScore');
+finalScore.setAttribute('style', 'border: 3px solid blue; margin-top: 30px; font-weight: bolder; color: yellow; font-size: 18px;');
+result.appendChild(finalScore);
 
 // will randomly return rock, paper, scissors as computer
 const getComputerChoice = (random) => { // arrow function
   // generate random number between 0 and 1
   random = Math.random();
   if (random <= 0.66 && random >= 0.34) {
-    // console.log(random);
     return 'paper';
   } else if (random <= 0.33) {
-    // console.log(random);
     return 'rock';
   } else {
-    // console.log(random);
     return 'scissors';
   }
 };
@@ -80,13 +80,19 @@ getComputerChoice();
 // func to play a single round of Rock Scissors Paper
 const playRound = (playerSelection, computerSelection) => {
   // console.log('1 ', playerSelection, '2 ', computerSelection);
-  if (playerSelection === 'rock' && computerSelection === 'rock') {
-    return 'It\'s a tie!';
-  } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-    return 'It\'s a tie!';
-  } else if (playerSelection === 'scissors' &&
+  if (playerSelection === 'btn_rock' && computerSelection === 'rock') {
+    const p1 = document.createElement('p');
+    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
+    finalScore.appendChild(p1);
+  } else if (playerSelection === 'btn_paper' && computerSelection === 'paper') {
+    const p1 = document.createElement('p');
+    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
+    finalScore.appendChild(p1);
+  } else if (playerSelection === 'btn_scissors' &&
     computerSelection === 'scissors') {
-    return 'It\'s a tie!';
+    const p1 = document.createElement('p');
+    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
+    finalScore.appendChild(p1);
   } else if (playerSelection === 'rock' && computerSelection === 'paper') {
     compScore++;
     return 'You lost! Paper beats Rock!';
@@ -110,49 +116,46 @@ const playRound = (playerSelection, computerSelection) => {
   }
 };
 
+btnRock.addEventListener('click', () => {
+  const computerSelection = getComputerChoice();
+  const playerSelection = 'btn_rock';
+  playRound(playerSelection, computerSelection);
+});
+
+btnPaper.addEventListener('click', () => {
+  const computerSelection = getComputerChoice();
+  const playerSelection = 'btn_paper';
+  playRound(playerSelection, computerSelection);
+});
+
+btnScissors.addEventListener('click', () => {
+  const computerSelection = getComputerChoice();
+  const playerSelection = 'btn_scissors';
+  playRound(playerSelection, computerSelection);
+});
+
 // let playerSelection;
 // eslint-disable-next-line no-unused-vars
 // const computerSelection = getComputerChoice();
 // console.log(`${playerSelection},${computerSelection}`);
 // console.log(playRound(playerSelection, computerSelection));
 
-const game = () => {
-  // play for five rounds
-  /* for (i = 0; i < 5; i++) */ // {
+// const game = () => {
+// play for five rounds
+/* for (i = 0; i < 5; i++) */ // {
 
-  /* const playerSelection = prompt('Make your choice: ',
+/* const playerSelection = prompt('Make your choice: ',
       'Rock, Paper, Scissors').toLowerCase();
   console.log(playRound(playerSelection, getComputerChoice
   ())); */
-  // }
-  if (playerScore > compScore) {
-    console.log('');
-    console.log('**********************');
-    console.log('* You won! Congrats! *');
-    console.log('**********************');
+// }
+/*  if (playerScore > compScore) {
+
   } else if (compScore > playerScore) {
-    console.log('');
-    console.log('*****************************');
-    console.log('* You lost! Condolescenses! *');
-    console.log('*****************************');
+
   } else if (playerScore === compScore) {
-    console.log('');
-    console.log('***************');
-    console.log('* It\'s a tie! *');
-    console.log('***************');
+
   }
-};
+}; */
 
-game();
-console.log('');
-console.log('playerScore: ', playerScore);
-console.log('compScore: ', compScore);
-console.log('');
-
-/* const fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-const fLen = fruits.length;
-for (let i = 0; i < fLen; i++) {
-}
-console.log(''); */
-
-
+// game();

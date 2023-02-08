@@ -18,6 +18,11 @@
   "homepage": "https://github.com/protoncoder/rock_paper_scissors_game#readme",
   "devDependencies": {
     "eslint": "^8.33.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jsdoc": "^39.8.0"
+  },
+  "dependencies": {
+    "js-doc": "^0.5.0",
+    "jsdoc": "^4.0.0"
   }
 }
