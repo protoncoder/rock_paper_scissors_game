@@ -1,0 +1,23 @@
+{
+  "name": "rock_paper_scissors_game",
+  "version": "1.0.0",
+  "description": "rock paper scissors game",
+  "main": "javascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/protoncoder/rock_paper_scissors_game.git"
+  },
+  "author": "Protoncoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/protoncoder/rock_paper_scissors_game/issues"
+  },
+  "homepage": "https://github.com/protoncoder/rock_paper_scissors_game#readme",
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
