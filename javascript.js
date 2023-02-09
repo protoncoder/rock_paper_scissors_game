@@ -6,7 +6,7 @@
 *  # Simple UI # *
 *  ############# */
 const body = document.querySelector('body');
-body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); border: 5px solid blue;');
+body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); border: 5px solid blue; margin: 5px;');
 
 const scoreScreen = document.querySelector('#scoreScreen');
 scoreScreen.setAttribute('style', 'border: 3px solid black; display: flex; justify-content: space-around;; padding: 50px; margin-top: 20px; margin-bottom: 20px; color: yellow; font-weight: bolder; font-size: 30px;');
@@ -33,13 +33,17 @@ button[2].setAttribute('style', ''); */
 *  ########## */
 const footer = document.createElement('div');
 footer.classList.add('footer');
-const pCredits = document.createElement('p');
+const pCredits = document.createElement('div');
 footer.appendChild(pCredits);
-pCredits.textContent = 'Created by Protoncoder';
-const pFooterYear = document.createElement('p');
-pFooterYear.textContent = '2023';
+pCredits.textContent = `Created by Protoncoder`;
+const pFooterYear = document.createElement('div');
+// █ Alt + 987 █ │ Alt + 179 │
+pFooterYear.textContent = '█████│2023│█████';
 footer.appendChild(pFooterYear);
-footer.setAttribute('style', 'border: 3px solid orange; display: inline-block; color: yellow; font-size: 24px; text-align: center; letter-spacing: 10px');
+const source = document.createElement('div');
+source.textContent = 'https://github.com/protoncoder';
+footer.appendChild(source);
+footer.setAttribute('style', 'border: 3px solid orange; display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 25px; line-height: 45px;');
 body.appendChild(footer);
 
 /* ##############
@@ -164,6 +168,14 @@ const checkForWinner = (playerScore, compScore) => {
   }
 };
 
+/* ##############################
+*  # Update scores in real time #
+*  ############################## */
+const updateScores = (playerSelection, computerSelection) => {
+  scorePlayer.textContent = `PLAYER SCORE: ${playerScore}`;
+  scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
+};
+
 /* #####################
 *  # UI eventListeners #
 *  ##################### */
@@ -171,6 +183,7 @@ btnRock.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
   const playerSelection = 'btn_rock';
   playRound(playerSelection, computerSelection);
+  updateScores(playerSelection, computerSelection);
   checkForWinner(playerScore, compScore);
 });
 
@@ -178,6 +191,7 @@ btnPaper.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
   const playerSelection = 'btn_paper';
   playRound(playerSelection, computerSelection);
+  updateScores(playerSelection, computerSelection);
   checkForWinner(playerScore, compScore);
 });
 
@@ -185,6 +199,7 @@ btnScissors.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
   const playerSelection = 'btn_scissors';
   playRound(playerSelection, computerSelection);
+  updateScores(playerSelection, computerSelection);
   checkForWinner(playerScore, compScore);
 });
 
@@ -198,30 +213,3 @@ const scoreComp = document.querySelector('#scoreComp');
 scoreComp.setAttribute('style', 'border: 3px solid white;');
 scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
 scoreScreen.appendChild(scoreComp);
-
-
-// let playerSelection;
-// eslint-disable-next-line no-unused-vars
-// const computerSelection = getComputerChoice();
-// console.log(`${playerSelection},${computerSelection}`);
-// console.log(playRound(playerSelection, computerSelection));
-
-// const game = () => {
-// play for five rounds
-/* for (i = 0; i < 5; i++) */ // {
-
-/* const playerSelection = prompt('Make your choice: ',
-      'Rock, Paper, Scissors').toLowerCase();
-  console.log(playRound(playerSelection, getComputerChoice
-  ())); */
-// }
-/*  if (playerScore > compScore) {
-
-  } else if (compScore > playerScore) {
-
-  } else if (playerScore === compScore) {
-
-  }
-}; */
-
-// game();
