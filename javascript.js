@@ -7,19 +7,19 @@
 *  # Simple UI # *
 *  ############# */
 const body = document.querySelector('body');
-body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); border: 5px solid blue; margin: 5px;');
+body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); margin: 5px;');
 
 const scoreScreen = document.querySelector('#scoreScreen');
-scoreScreen.setAttribute('style', 'border: 3px solid black; display: flex; justify-content: center; gap: 200px; padding: 50px; margin-top: 20px; margin-bottom: 20px; color: yellow; font-weight: bolder; font-size: 30px; align-items: center;');
+scoreScreen.setAttribute('style', 'display: flex; justify-content: center; gap: 200px; padding: 50px; margin-top: 20px; margin-bottom: 20px; color: yellow; font-weight: bolder; font-size: 30px; align-items: center;');
 
 const uiRps = document.querySelector('.ui-rps');
 body.appendChild(uiRps);
-uiRps.setAttribute('style', 'border: 3px solid red; display: flex; gap: 50px; justify-content: center;');
+uiRps.setAttribute('style', 'display: flex; gap: 50px; justify-content: center;');
 
 const allItems = document.getElementsByClassName('item');
-allItems[0].setAttribute('style', 'border: 3px solid green; display: flex; flex-direction: column;');
-allItems[1].setAttribute('style', 'border: 3px solid green; display: flex; flex-direction: column;');
-allItems[2].setAttribute('style', 'border: 3px solid green; display: flex; flex-direction: column;');
+allItems[0].setAttribute('style', 'display: flex; flex-direction: column;');
+allItems[1].setAttribute('style', 'display: flex; flex-direction: column;');
+allItems[2].setAttribute('style', 'display: flex; flex-direction: column;');
 
 const cursorPointer = document.getElementsByTagName('img');
 cursorPointer[0].style.cursor = 'pointer';
@@ -41,7 +41,7 @@ footer.appendChild(pFooterYear);
 const source = document.createElement('div');
 source.textContent = 'https://github.com/protoncoder';
 footer.appendChild(source);
-footer.setAttribute('style', 'border: 3px solid orange; display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 25px; line-height: 45px;');
+footer.setAttribute('style', 'display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 25px; line-height: 45px;');
 body.appendChild(footer);
 
 /* ##############
@@ -57,10 +57,10 @@ const btnScissors = document.querySelector('#btn_scissors');
 const result = document.getElementById('result');
 
 
-result.setAttribute('style', 'color: yellow; font-size: 45px; border: 3px solid white; display: flex; align-items: center; margin-bottom: 20px; padding: 30px; flex-direction: column; font-weight: bolder;');
+result.setAttribute('style', 'color: yellow; font-size: 45px; display: flex; align-items: center; margin-bottom: 20px; padding: 30px; flex-direction: column; font-weight: bolder;');
 
 const finalScore = document.querySelector('#finalScore');
-finalScore.setAttribute('style', 'border: 3px solid blue; margin-top: 30px; font-weight: bolder; color: yellow; font-size: 18px; background :linear-gradient(to right, #0f0c29, #302b63, #24243e);');
+finalScore.setAttribute('style', 'margin-top: 30px; font-weight: bolder; color: yellow; font-size: 18px; background :linear-gradient(to right, #0f0c29, #302b63, #24243e); border-radius: 7px; padding: 10px;');
 result.appendChild(finalScore);
 
 // will randomly return rock, paper, scissors as computer
@@ -123,7 +123,6 @@ const playRound = (playerSelection, computerSelection) => {
 const checkForWinner = (playerScore, compScore) => {
   if (playerScore === 5) {
     finalScore.textContent = 'You won! Congrats!';
-    // finalScore.setAttribute('style', 'color: green;');
     finalScore.style.color = 'green';
     result.appendChild(finalScore);
     // disables buttons when playerScore is 5
@@ -133,6 +132,7 @@ const checkForWinner = (playerScore, compScore) => {
     btn_paper.style.opacity = '0.5';
     btn_scissors.style.opacity = '0.5';
     // cursor not responding after 5 points of player
+    reset.style.cursor = 'pointer';
     btn_rock.style.cursor = 'no-drop';
     btn_paper.style.cursor = 'no-drop';
     btn_scissors.style.cursor = 'no-drop';
@@ -143,6 +143,7 @@ const checkForWinner = (playerScore, compScore) => {
     document.getElementById('btn_scissors').disabled = true;
     // reset button
     document.getElementById('reset-btn').style.opacity = 1;
+    reset.disabled = false;
   } else if (compScore === 5) {
     finalScore.textContent = 'You lost! Meow Meow Meow...';
     finalScore.style.color = 'red';
@@ -156,6 +157,7 @@ const checkForWinner = (playerScore, compScore) => {
     btn_paper.style.opacity = '0.5';
     btn_scissors.style.opacity = '0.5';
     // make cursor to can't click
+    reset.style.cursor = 'pointer';
     btn_rock.style.cursor = 'no-drop';
     btn_paper.style.cursor = 'no-drop';
     btn_scissors.style.cursor = 'no-drop';
@@ -164,6 +166,10 @@ const checkForWinner = (playerScore, compScore) => {
     img_scissors.style.cursor = 'no-drop';
     // reset button
     document.getElementById('reset-btn').style.opacity = 1;
+    reset.disabled = false;
+  } else {
+    reset.disabled = true;
+    reset.style.cursor = 'context-menu';
   }
 };
 
@@ -203,16 +209,17 @@ btnScissors.addEventListener('click', () => {
 });
 
 const scorePlayer = document.querySelector('#scorePlayer');
-scorePlayer.setAttribute('style', 'border: 3px solid white;');
+scorePlayer.setAttribute('style', '');
 scorePlayer.textContent = `PLAYER SCORE: ${playerScore}`;
 scoreScreen.appendChild(scorePlayer);
 
 const reset = document.querySelector('#reset-btn');
 scoreScreen.appendChild(reset);
-reset.setAttribute('style', 'padding: 5px 20px 5px 20px; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); color: yellow; font-weight: bolder; border-radius: 5px; border: 1px solid yellow; cursor: pointer; box-shadow: 1px 1px 20px 5px; opacity: 0');
+reset.setAttribute('style', 'padding: 5px 20px 5px 20px; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); color: yellow; font-weight: bolder; border-radius: 5px; border: 1px solid yellow; cursor: pointer; box-shadow: 1px 1px 20px 5px; opacity: 0;');
+reset.style.cursor = 'context-menu';
 
 const scoreComp = document.querySelector('#scoreComp');
-scoreComp.setAttribute('style', 'border: 3px solid white; margin-right: 150px;');
+scoreComp.setAttribute('style', 'margin-right: 150px;');
 scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
 scoreScreen.appendChild(scoreComp);
 
@@ -221,6 +228,7 @@ function resetGame() {
   compScore = 0;
   updateScores(playerScore, compScore);
   document.getElementById('reset-btn').style.opacity = 0;
+  // document.getElementById('reset-btn').disabled = false;
   document.getElementById('btn_rock').disabled = false;
   document.getElementById('btn_paper').disabled = false;
   document.getElementById('btn_scissors').disabled = false;
@@ -229,6 +237,7 @@ function resetGame() {
   btn_rock.style.opacity = '1';
   btn_paper.style.opacity = '1';
   btn_scissors.style.opacity = '1';
+  reset.style.cursor = 'context-menu';
   btn_rock.style.cursor = 'pointer';
   btn_paper.style.cursor = 'pointer';
   btn_scissors.style.cursor = 'pointer';
