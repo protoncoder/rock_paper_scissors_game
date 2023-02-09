@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 /* eslint linebreak-style: ["error", "windows"] */
@@ -131,6 +132,7 @@ const checkForWinner = (playerScore, compScore) => {
     btn_rock.style.opacity = '0.5';
     btn_paper.style.opacity = '0.5';
     btn_scissors.style.opacity = '0.5';
+    // cursor not responding after 5 points of player
     btn_rock.style.cursor = 'no-drop';
     btn_paper.style.cursor = 'no-drop';
     btn_scissors.style.cursor = 'no-drop';
@@ -139,6 +141,8 @@ const checkForWinner = (playerScore, compScore) => {
     img_scissors.style.cursor = 'no-drop';
     document.getElementById('btn_paper').disabled = true;
     document.getElementById('btn_scissors').disabled = true;
+    // reset button
+    document.getElementById('reset-btn').style.opacity = 1;
   } else if (compScore === 5) {
     finalScore.textContent = 'You lost! Meow Meow Meow...';
     finalScore.style.color = 'red';
@@ -158,6 +162,8 @@ const checkForWinner = (playerScore, compScore) => {
     img_rock.style.cursor = 'no-drop';
     img_paper.style.cursor = 'no-drop';
     img_scissors.style.cursor = 'no-drop';
+    // reset button
+    document.getElementById('reset-btn').style.opacity = 1;
   }
 };
 
@@ -168,12 +174,6 @@ const updateScores = (playerSelection, computerSelection) => {
   scorePlayer.textContent = `PLAYER SCORE: ${playerScore}`;
   scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
 };
-
-/* const resetScore = () => {
-  playerScore = 0;
-  compScore = 0;
-  finalScore.textContent = 'Please choose your weapon';
-}; */
 
 /* #####################
 *  # UI eventListeners #
@@ -207,20 +207,32 @@ scorePlayer.setAttribute('style', 'border: 3px solid white;');
 scorePlayer.textContent = `PLAYER SCORE: ${playerScore}`;
 scoreScreen.appendChild(scorePlayer);
 
-const reset = document.querySelector('#reset');
+const reset = document.querySelector('#reset-btn');
 scoreScreen.appendChild(reset);
-reset.setAttribute('style', 'padding: 5px 20px 5px 20px; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); color: yellow; font-weight: bolder; border-radius: 5px; border: 1px solid yellow; cursor: pointer; box-shadow: 1px 1px 20px 5px;');
-
-/* #########################
-*  # reset button and func #
-*  ######################### */
-//  <button onclick="resetScore()"> Reset The Game </button>
-
-// document.querySelector('#scorePlayer');
-// document.querySelector('#scoreComp');
-
+reset.setAttribute('style', 'padding: 5px 20px 5px 20px; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); color: yellow; font-weight: bolder; border-radius: 5px; border: 1px solid yellow; cursor: pointer; box-shadow: 1px 1px 20px 5px; opacity: 0');
 
 const scoreComp = document.querySelector('#scoreComp');
 scoreComp.setAttribute('style', 'border: 3px solid white; margin-right: 150px;');
 scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
 scoreScreen.appendChild(scoreComp);
+
+function resetGame() {
+  playerScore = 0;
+  compScore = 0;
+  updateScores(playerScore, compScore);
+  document.getElementById('reset-btn').style.opacity = 0;
+  document.getElementById('btn_rock').disabled = false;
+  document.getElementById('btn_paper').disabled = false;
+  document.getElementById('btn_scissors').disabled = false;
+  finalScore.textContent = 'Please choose your weapon';
+  finalScore.style.color = 'yellow';
+  btn_rock.style.opacity = '1';
+  btn_paper.style.opacity = '1';
+  btn_scissors.style.opacity = '1';
+  btn_rock.style.cursor = 'pointer';
+  btn_paper.style.cursor = 'pointer';
+  btn_scissors.style.cursor = 'pointer';
+  img_rock.style.cursor = 'pointer';
+  img_paper.style.cursor = 'pointer';
+  img_scissors.style.cursor = 'pointer';
+}
