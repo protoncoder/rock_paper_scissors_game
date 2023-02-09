@@ -79,40 +79,75 @@ getComputerChoice();
 
 // func to play a single round of Rock Scissors Paper
 const playRound = (playerSelection, computerSelection) => {
-  // console.log('1 ', playerSelection, '2 ', computerSelection);
+  console.log('1 ', playerSelection, '2 ', computerSelection);
   if (playerSelection === 'btn_rock' && computerSelection === 'rock') {
-    const p1 = document.createElement('p');
-    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
-    finalScore.appendChild(p1);
+    // const p1 = document.createElement('p');
+    finalScore.textContent = `It's a tie! You both chose: ${computerSelection}`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
   } else if (playerSelection === 'btn_paper' && computerSelection === 'paper') {
-    const p1 = document.createElement('p');
-    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
-    finalScore.appendChild(p1);
+    finalScore.textContent = `It's a tie! You both chose: ${computerSelection}`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
   } else if (playerSelection === 'btn_scissors' &&
     computerSelection === 'scissors') {
-    const p1 = document.createElement('p');
-    p1.textContent = `It's a tie! You both chose: ${playerSelection}`;
-    finalScore.appendChild(p1);
-  } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+    finalScore.textContent = `It's a tie! You both chose: ${computerSelection}`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
+  } else if (playerSelection === 'btn_rock' && computerSelection === 'paper') {
     compScore++;
-    return 'You lost! Paper beats Rock!';
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    finalScore.textContent = `You lose! paper beats rock!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 2000);
+  } else if (playerSelection === 'btn_rock' && computerSelection === 'scissors') {
     playerScore++;
-    return 'You won! Rock beats Scissors';
-  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+    finalScore.textContent = `You won! rock beats scissors!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
+  } else if (playerSelection === 'btn_scissors' && computerSelection === 'paper') {
     playerScore++;
-    return 'You won! Scissors beats Paper';
-  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+    finalScore.textContent = `You won! scissors beats paper!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
+  } else if (playerSelection === 'btn_scissors' && computerSelection === 'rock') {
     compScore++;
-    return 'You lost! Rock beats Scissors!';
-  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+    finalScore.textContent = `You lose! rock beats scissors!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
+  } else if (playerSelection === 'btn_paper' && computerSelection === 'rock') {
     playerScore++;
-    return 'You won! Paper beats Rock!';
-  } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+    finalScore.textContent = `You won! paper beats rock!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
+  } else if (playerSelection === 'btn_paper' && computerSelection === 'scissors') {
     compScore++;
-    return 'You lost! Scissors beats Paper!';
+    finalScore.textContent = `You lose! scissors beats paper!`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 3000);
   } else {
-    return 'Something went terribly wrong...';
+    finalScore.textContent = `Something went terrible wrong...`;
+    result.appendChild(finalScore);
+    setTimeout(() => {
+      result.removeChild(finalScore);
+    }, 10000); ;
   }
 };
 
