@@ -22,7 +22,10 @@ allItems[1].setAttribute('style', 'display: flex; flex-direction: column;');
 allItems[2].setAttribute('style', 'display: flex; flex-direction: column;');
 
 const cursorPointer = document.getElementsByTagName('img');
-cursorPointer[0].style.cursor = 'pointer';
+cursorPointer[0].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
+cursorPointer[1].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
+cursorPointer[2].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
+cursorPointer[0].style.cursor = 'pointer;';
 cursorPointer[1].style.cursor = 'pointer';
 cursorPointer[2].style.cursor = 'pointer';
 
@@ -38,8 +41,13 @@ const pFooterYear = document.createElement('div');
 // █ Alt + 987 █ │ Alt + 179 │
 pFooterYear.textContent = '█████│2023│█████';
 footer.appendChild(pFooterYear);
-const source = document.createElement('div');
-source.textContent = 'https://github.com/protoncoder';
+const source = document.createElement('button');
+source.classList.add('github-link');
+const link = document.createElement('a');
+link.classList.add('a-github');
+source.appendChild(link);
+link.href = `https://github.com/protoncoder`;
+link.textContent = 'Check My GitHub';
 footer.appendChild(source);
 footer.setAttribute('style', 'display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 25px; line-height: 45px;');
 body.appendChild(footer);
@@ -52,8 +60,12 @@ let playerScore = 0;
 let compScore = 0;
 
 const btnRock = document.querySelector('#btn_rock');
+btnRock.setAttribute('style', 'border-radius: 35%; box-shadow: 10px 10px 10px 10px;');
+
 const btnPaper = document.querySelector('#btn_paper');
+btnPaper.setAttribute('style', 'border-radius: 35%; box-shadow: 10px 10px 10px 10px;');
 const btnScissors = document.querySelector('#btn_scissors');
+btnScissors.setAttribute('style', 'border-radius: 35%; box-shadow: 10px 10px 10px 10px;');
 const result = document.getElementById('result');
 
 
@@ -223,6 +235,9 @@ scoreComp.setAttribute('style', 'margin-right: 150px;');
 scoreComp.textContent = `COMPUTER SCORE: ${compScore}`;
 scoreScreen.appendChild(scoreComp);
 
+/* #########################
+*  # Reset Button Function #
+*  ######################### */
 function resetGame() {
   playerScore = 0;
   compScore = 0;

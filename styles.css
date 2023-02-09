@@ -1,0 +1,36 @@
+#img_rock:active {
+  transform: translateY(4px);
+}
+
+#img_paper:active {
+  transform: translateY(4px);
+}
+
+#img_scissors:active {
+  transform: translateY(4px);
+}
+
+#reset-btn:active {
+  transform: translateY(4px);
+}
+
+.a-github {
+  text-decoration: none;
+}
+
+.github-link {
+  outline: none;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: yellow;
+  box-shadow: 5px 5px 20px 5px rgba(0, 132, 255, 0.74);
+  font-weight: bolder;
+  font-size: 17px;
+  margin: 0px 690px 0px 690px;
+}
+
+.github-link:active {
+  transform: translateY(4px);
+}
