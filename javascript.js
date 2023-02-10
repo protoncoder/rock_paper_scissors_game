@@ -49,7 +49,7 @@ source.appendChild(link);
 link.href = `https://github.com/protoncoder`;
 link.textContent = 'Check My GitHub';
 footer.appendChild(source);
-footer.setAttribute('style', 'display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 25px; line-height: 45px;');
+footer.setAttribute('style', 'display: flex; color: yellow; font-size: 24px; text-align: center; letter-spacing: 2px; flex-direction: column; margin-top: 40px; line-height: 45px;');
 body.appendChild(footer);
 
 /* ##############
