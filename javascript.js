@@ -9,6 +9,10 @@
 const body = document.querySelector('body');
 body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); margin: 5px;');
 
+document.getElementById('img_rock').classList.add('r_active');
+document.getElementById('img_paper').classList.add('r_active');
+document.getElementById('img_scissors').classList.add('r_active');
+
 const scoreScreen = document.querySelector('#scoreScreen');
 scoreScreen.setAttribute('style', 'display: flex; justify-content: center; gap: 200px; padding: 50px; color: yellow; font-weight: bolder; font-size: 30px; align-items: center; box-shadow: 1px 1px 20px 10px; border-radius: 50px; margin: 25px 50px 25px 50px;');
 
