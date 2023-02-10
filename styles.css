@@ -1,12 +1,12 @@
-#img_rock:active {
+#img_rock.r_active:active {
   transform: translateY(4px);
 }
 
-#img_paper:active {
+#img_paper.r_active:active {
   transform: translateY(4px);
 }
 
-#img_scissors:active {
+#img_scissors.r_active:active {
   transform: translateY(4px);
 }
 

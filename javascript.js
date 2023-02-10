@@ -10,11 +10,11 @@ const body = document.querySelector('body');
 body.setAttribute('style', 'display: flex; justify-content: center; flex-direction: column; background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); margin: 5px;');
 
 const scoreScreen = document.querySelector('#scoreScreen');
-scoreScreen.setAttribute('style', 'display: flex; justify-content: center; gap: 200px; padding: 50px; margin-top: 20px; margin-bottom: 20px; color: yellow; font-weight: bolder; font-size: 30px; align-items: center;');
+scoreScreen.setAttribute('style', 'display: flex; justify-content: center; gap: 200px; padding: 50px; color: yellow; font-weight: bolder; font-size: 30px; align-items: center; box-shadow: 1px 1px 20px 10px; border-radius: 50px; margin: 25px 50px 25px 50px;');
 
 const uiRps = document.querySelector('.ui-rps');
 body.appendChild(uiRps);
-uiRps.setAttribute('style', 'display: flex; gap: 50px; justify-content: center;');
+uiRps.setAttribute('style', 'display: flex; gap: 70px; justify-content: center;');
 
 const allItems = document.getElementsByClassName('item');
 allItems[0].setAttribute('style', 'display: flex; flex-direction: column;');
@@ -22,7 +22,7 @@ allItems[1].setAttribute('style', 'display: flex; flex-direction: column;');
 allItems[2].setAttribute('style', 'display: flex; flex-direction: column;');
 
 const cursorPointer = document.getElementsByTagName('img');
-cursorPointer[0].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
+cursorPointer[0].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none; ');
 cursorPointer[1].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
 cursorPointer[2].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
 cursorPointer[0].style.cursor = 'pointer;';
@@ -72,7 +72,7 @@ const result = document.getElementById('result');
 result.setAttribute('style', 'color: yellow; font-size: 45px; display: flex; align-items: center; margin-bottom: 20px; padding: 30px; flex-direction: column; font-weight: bolder;');
 
 const finalScore = document.querySelector('#finalScore');
-finalScore.setAttribute('style', 'margin-top: 30px; font-weight: bolder; color: yellow; font-size: 18px; background :linear-gradient(to right, #0f0c29, #302b63, #24243e); border-radius: 7px; padding: 10px;');
+finalScore.setAttribute('style', 'margin-top: 30px; font-weight: bolder; color: yellow; font-size: 18px; background :linear-gradient(to right, #0f0c29, #302b63, #24243e); border-radius: 7px; padding: 10px; box-shadow: 0px 0px 10px 0px;');
 result.appendChild(finalScore);
 
 // will randomly return rock, paper, scissors as computer
@@ -156,6 +156,10 @@ const checkForWinner = (playerScore, compScore) => {
     // reset button
     document.getElementById('reset-btn').style.opacity = 1;
     reset.disabled = false;
+    // remove :active functionality from buttons
+    document.getElementById('img_rock').classList.remove('r_active');
+    document.getElementById('img_paper').classList.remove('r_active');
+    document.getElementById('img_scissors').classList.remove('r_active');
   } else if (compScore === 5) {
     finalScore.textContent = 'You lost! Meow Meow Meow...';
     finalScore.style.color = 'red';
@@ -164,6 +168,10 @@ const checkForWinner = (playerScore, compScore) => {
     document.getElementById('btn_rock').disabled = true;
     document.getElementById('btn_paper').disabled = true;
     document.getElementById('btn_scissors').disabled = true;
+    // remove :active functionality from buttons
+    document.getElementById('img_rock').classList.remove('r_active');
+    document.getElementById('img_paper').classList.remove('r_active');
+    document.getElementById('img_scissors').classList.remove('r_active');
     // make buttons less visible
     btn_rock.style.opacity = '0.5';
     btn_paper.style.opacity = '0.5';
@@ -247,6 +255,10 @@ function resetGame() {
   document.getElementById('btn_rock').disabled = false;
   document.getElementById('btn_paper').disabled = false;
   document.getElementById('btn_scissors').disabled = false;
+  // enable imgs :active status
+  document.getElementById('img_rock').classList.add('r_active');
+  document.getElementById('img_paper').classList.add('r_active');
+  document.getElementById('img_scissors').classList.add('r_active');
   finalScore.textContent = 'Please choose your weapon';
   finalScore.style.color = 'yellow';
   btn_rock.style.opacity = '1';
