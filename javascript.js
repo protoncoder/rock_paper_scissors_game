@@ -29,7 +29,7 @@ const cursorPointer = document.getElementsByTagName('img');
 cursorPointer[0].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none; ');
 cursorPointer[1].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
 cursorPointer[2].setAttribute('style', 'outline: none; border-radius: 35%; border: none; text-decoration: none;');
-cursorPointer[0].style.cursor = 'pointer;';
+cursorPointer[0].style.cursor = 'pointer';
 cursorPointer[1].style.cursor = 'pointer';
 cursorPointer[2].style.cursor = 'pointer';
 
@@ -255,7 +255,6 @@ function resetGame() {
   compScore = 0;
   updateScores(playerScore, compScore);
   document.getElementById('reset-btn').style.opacity = 0;
-  // document.getElementById('reset-btn').disabled = false;
   document.getElementById('btn_rock').disabled = false;
   document.getElementById('btn_paper').disabled = false;
   document.getElementById('btn_scissors').disabled = false;
@@ -268,7 +267,9 @@ function resetGame() {
   btn_rock.style.opacity = '1';
   btn_paper.style.opacity = '1';
   btn_scissors.style.opacity = '1';
+  // reset buttton style cursor
   reset.style.cursor = 'context-menu';
+  // player choice buttons cursor style
   btn_rock.style.cursor = 'pointer';
   btn_paper.style.cursor = 'pointer';
   btn_scissors.style.cursor = 'pointer';
